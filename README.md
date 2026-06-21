@@ -17,6 +17,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - AGENT4 Canonical Entity Agent for duplicate, rename, parent-brand, product-scope, domain/repo conflict, and quarantine identity classification.
 - AGENT5 HTTP Audit Agent for fixture-default HTTP observation classification.
 - AGENT6 Quarantine Classifier Agent for private worker/admin quarantine events, blockers, retry recommendations, and safe exclusion reasons.
+- AGENT7 Review Queue Packager Agent for local admin review-ready and review-blocked payload packages.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -134,3 +135,19 @@ AGENT6_QUARANTINE_CLASSIFIER_READY
 ```
 
 Quarantine is not rejection and not publication. It produces review blockers, retry recommendations, and safe exclusion reasons only; it does not delete data, write DB rows, expose quarantine internals publicly, write `published_projection`, mutate sitemap, publish, deploy, or mutate `88CN` / `88cn-index-data`.
+
+## AGENT7 Review Queue Packager Agent
+
+The AGENT7 review module packages source, canonical, audit, and quarantine outputs into local admin-review payload files:
+
+```bash
+node tests/review/review-queue-packager.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT7_REVIEW_QUEUE_PACKAGER_READY
+```
+
+It emits `review-ready.jsonl`, `review-blocked.jsonl`, `admin-summary.md`, and `import-manifest.json` content in dry-run memory. It does not write directly to `88CN`, write `published_projection`, mutate sitemap, publicize quarantine internals, publish, deploy, or mutate `88cn-index-data`.

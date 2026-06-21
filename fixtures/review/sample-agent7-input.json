@@ -1,0 +1,94 @@
+{
+  "source_records": [
+    {
+      "project_name": "Aurora Code",
+      "source_status": "source_verified",
+      "official_website_url": "https://aurora.example.com",
+      "github_url": "https://github.com/example/aurora-code",
+      "docs_url": "https://docs.aurora.example.com",
+      "primary_category": "ai-coding",
+      "collection_tag_candidates": [
+        "developer-tools"
+      ],
+      "original_summary_candidate": null,
+      "auto_publish": false
+    },
+    {
+      "project_name": "Blocked Audit AI",
+      "source_status": "needs_manual_source_review",
+      "official_website_url": "https://blocked.example.com",
+      "github_url": null,
+      "docs_url": null,
+      "primary_category": "ai-search",
+      "collection_tag_candidates": [],
+      "original_summary_candidate": null,
+      "auto_publish": false
+    }
+  ],
+  "canonical_candidates": [
+    {
+      "project_name": "Aurora Code",
+      "canonical_slug": "aurora-code",
+      "review_status": "ready_for_review",
+      "states": [
+        "not_duplicate"
+      ],
+      "auto_publish": false,
+      "public_projection": false
+    },
+    {
+      "project_name": "Blocked Audit AI",
+      "canonical_slug": "blocked-audit-ai",
+      "review_status": "needs_canonical_review",
+      "states": [
+        "ambiguous_product_scope",
+        "needs_canonical_review"
+      ],
+      "auto_publish": false,
+      "public_projection": false
+    }
+  ],
+  "audit_observations": [
+    {
+      "project_name": "Aurora Code",
+      "target_url": "https://aurora.example.com",
+      "website_reachable": true,
+      "github_linked": true,
+      "docs_linked": true,
+      "jsonld_detected": true,
+      "software_application_schema_detected": true,
+      "failures": []
+    },
+    {
+      "project_name": "Blocked Audit AI",
+      "target_url": "https://blocked.example.com",
+      "website_reachable": false,
+      "github_linked": false,
+      "docs_linked": false,
+      "jsonld_detected": false,
+      "software_application_schema_detected": false,
+      "failures": [
+        "blocked_by_waf"
+      ]
+    }
+  ],
+  "quarantine_events": [
+    {
+      "event_id": "q_fixture_blocked",
+      "project_name": "Blocked Audit AI",
+      "source_agent": "audit",
+      "source_ref": "https://blocked.example.com",
+      "category": "waf_or_blocked",
+      "severity": "medium",
+      "reason_codes": [
+        "blocked_by_waf"
+      ],
+      "review_blocker": "HTTP audit observed a WAF or blocked response.",
+      "retry_recommendation": "Do not bypass; retry later or request manual source confirmation.",
+      "safe_exclusion_reason": "Exclude from automated audit conclusions because access was blocked.",
+      "private_worker_only": true,
+      "auto_publish": false,
+      "public_projection": false
+    }
+  ]
+}
