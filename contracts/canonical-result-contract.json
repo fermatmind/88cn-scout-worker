@@ -65,10 +65,12 @@
         "enum": [
           "not_duplicate",
           "possible_duplicate",
+          "duplicate_confirmed_by_exact_source",
           "ambiguous_parent_brand",
           "ambiguous_product_scope",
           "one_domain_many_repos",
           "one_repo_many_domains",
+          "renamed_project",
           "needs_canonical_review",
           "quarantined_identity_conflict"
         ]

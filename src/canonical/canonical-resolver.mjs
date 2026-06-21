@@ -2,12 +2,34 @@ import { candidateSlug, normalizeDomain, normalizeGithubRepoUrl, normalizeProjec
 
 const AMBIGUITY_STATES = new Set([
   'possible_duplicate',
+  'duplicate_confirmed_by_exact_source',
   'ambiguous_parent_brand',
   'ambiguous_product_scope',
   'one_domain_many_repos',
   'one_repo_many_domains',
+  'renamed_project',
   'quarantined_identity_conflict'
 ]);
+
+export const AGENT4_RESULT_CODE = 'AGENT4_CANONICAL_ENTITY_AGENT_READY_DRY_RUN';
+
+export function runCanonicalEntityDryRun(rows) {
+  const candidates = resolveCanonicalCandidates(rows);
+  return {
+    result_code: AGENT4_RESULT_CODE,
+    dry_run: true,
+    network_used: false,
+    production_write: false,
+    auto_publish: false,
+    candidates,
+    summary: {
+      total: candidates.length,
+      ready_for_review: candidates.filter((row) => row.review_status === 'ready_for_review').length,
+      needs_canonical_review: candidates.filter((row) => row.review_status === 'needs_canonical_review').length,
+      quarantined_identity_conflict: candidates.filter((row) => row.states.includes('quarantined_identity_conflict')).length
+    }
+  };
+}
 
 export function resolveCanonicalCandidates(rows) {
   const normalized = rows.map((row, index) => normalizeRow(row, index));
@@ -27,9 +49,18 @@ export function resolveCanonicalCandidates(rows) {
     if (repoGroup.length > 1 && unique(repoGroup.map((item) => item.normalized_domain)).length > 1) {
       states.add('one_repo_many_domains');
     }
+    if (domainGroup.length > 1 && repoGroup.length > 1 && row.normalized_domain && row.normalized_github_repo) {
+      const exactSourceMatches = normalized.filter(
+        (item) =>
+          item.normalized_domain === row.normalized_domain &&
+          item.normalized_github_repo === row.normalized_github_repo
+      );
+      if (exactSourceMatches.length > 1) states.add('duplicate_confirmed_by_exact_source');
+    }
     if (nameGroup.length > 1 || domainGroup.length > 1 || repoGroup.length > 1) {
       states.add('possible_duplicate');
     }
+    if (hasRenamedSignal(row)) states.add('renamed_project');
     if (looksLikeParentBrand(row, rows)) states.add('ambiguous_parent_brand');
     if (looksLikeProductScopeConflict(row)) states.add('ambiguous_product_scope');
     if (!row.normalized_domain && !row.normalized_github_repo) states.add('quarantined_identity_conflict');
@@ -38,6 +69,7 @@ export function resolveCanonicalCandidates(rows) {
     const reviewStatus = [...states].some((state) => AMBIGUITY_STATES.has(state))
       ? 'needs_canonical_review'
       : 'ready_for_review';
+    if (reviewStatus === 'needs_canonical_review') states.add('needs_canonical_review');
 
     return {
       candidate_id: `${row.batch_id ?? 'canonical'}:${row.row_index}`,
@@ -95,6 +127,13 @@ function looksLikeParentBrand(row, allRows) {
 function looksLikeProductScopeConflict(row) {
   const name = row.normalized_name;
   return /\b(model|platform|cloud|studio|api|agent|suite)\b/.test(name);
+}
+
+function hasRenamedSignal(row) {
+  if (!Array.isArray(row.previous_names)) return false;
+  return row.previous_names
+    .map((name) => normalizeProjectName(name))
+    .some((name) => name && name !== row.normalized_name);
 }
 
 function classifyIdentity(row) {

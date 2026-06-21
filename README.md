@@ -14,6 +14,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - AGENT1 no-runtime CLI contract, input manifest, output artifact shape, fixture, and validation.
 - AGENT2 Discovery Hint Agent for fixture/local-batch normalization of public-safe source hints.
 - AGENT3 Official Source Resolver Agent for fixture/local-only official URL, GitHub repo, and docs-domain classification.
+- AGENT4 Canonical Entity Agent for duplicate, rename, parent-brand, product-scope, domain/repo conflict, and quarantine identity classification.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -83,3 +84,19 @@ AGENT3_OFFICIAL_SOURCE_RESOLVER_READY_DRY_RUN
 ```
 
 It performs local URL/domain/GitHub repo normalization only. It does not perform live HTTP checks, logins, browser automation, crawler execution, source writes, or publication.
+
+## AGENT4 Canonical Entity Agent
+
+The AGENT4 canonical module classifies identity ambiguity and duplicate states:
+
+```bash
+node tests/canonical/canonical-resolver.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT4_CANONICAL_ENTITY_AGENT_READY_DRY_RUN
+```
+
+It does not auto-merge ambiguous entities, publish canonical results, write `published_projection`, write DB rows, mutate `88CN`, or mutate `88cn-index-data`.
