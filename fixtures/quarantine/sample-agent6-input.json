@@ -1,0 +1,79 @@
+{
+  "discovery_results": [
+    {
+      "project_name": "Directory Only AI",
+      "source_url": "https://directory.example/directory-only-ai",
+      "reason_codes": [
+        "directory_hint_only",
+        "missing_official_website",
+        "missing_docs_url",
+        "missing_github_url"
+      ],
+      "auto_publish": false
+    },
+    {
+      "project_name": "Copied Summary AI",
+      "source_url": "https://launch.example/copied-summary-ai",
+      "reason_codes": [
+        "copied_content_not_used"
+      ],
+      "auto_publish": false
+    }
+  ],
+  "source_results": [
+    {
+      "project_name": "Source Missing AI",
+      "source_status": "source_missing",
+      "official_domain": null,
+      "github_repo": null,
+      "docs_domain": null,
+      "reason_codes": [
+        "missing_official_website",
+        "missing_github_repo",
+        "missing_docs_url"
+      ],
+      "manual_review_required": true,
+      "auto_publish": false
+    }
+  ],
+  "canonical_candidates": [
+    {
+      "candidate_id": "canonical:2",
+      "project_name": "Ambiguous AI Platform",
+      "canonical_slug": "ambiguous-ai-platform",
+      "states": [
+        "possible_duplicate",
+        "ambiguous_product_scope",
+        "needs_canonical_review"
+      ],
+      "review_status": "needs_canonical_review",
+      "auto_publish": false,
+      "public_projection": false
+    }
+  ],
+  "audit_observations": [
+    {
+      "project_name": "Blocked Audit AI",
+      "target_url": "https://blocked.example.com",
+      "website_reachable": false,
+      "github_linked": false,
+      "docs_linked": false,
+      "waf_or_blocked_status": "blocked_by_waf",
+      "failures": [
+        "blocked_by_waf",
+        "sitemap_missing"
+      ]
+    },
+    {
+      "project_name": "Unavailable AI",
+      "target_url": "https://unavailable.example.com",
+      "website_reachable": false,
+      "github_linked": true,
+      "docs_linked": true,
+      "waf_or_blocked_status": "not_blocked",
+      "failures": [
+        "dns_fail"
+      ]
+    }
+  ]
+}
