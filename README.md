@@ -12,6 +12,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - Audit observation contract skeleton.
 - Quarantine event contract skeleton.
 - AGENT1 no-runtime CLI contract, input manifest, output artifact shape, fixture, and validation.
+- AGENT2 Discovery Hint Agent for fixture/local-batch normalization of public-safe source hints.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -49,3 +50,19 @@ AGENT1_CLI_CONTRACT_READY_NO_RUNTIME
 ```
 
 The runner writes local artifacts under `tmp/` and performs no network, DB, queue, `published_projection`, sitemap, external outreach, deploy, or server/cloud action.
+
+## AGENT2 Discovery Hint Agent
+
+The AGENT2 discovery module normalizes local seed hints into identity candidates:
+
+```bash
+node tests/discovery/discovery-hint-agent.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT2_DISCOVERY_HINT_AGENT_READY_DRY_RUN
+```
+
+It accepts fixture/local JSONL only. It does not crawl, fetch, copy descriptions, import rankings, publish, write DB rows, mutate `88CN`, or mutate `88cn-index-data`.
