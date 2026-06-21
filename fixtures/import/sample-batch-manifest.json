@@ -1,0 +1,23 @@
+{
+  "batch_id": "fixture-import-001",
+  "source": "maintainer_submitted_fixture",
+  "items": [
+    {
+      "name": "Aurora Code",
+      "official_url": "https://example.com/aurora",
+      "public_github_url": "https://github.com/example/aurora-code",
+      "public_docs_url": "https://docs.example.com/aurora",
+      "category_slug": "ai-coding"
+    },
+    {
+      "name": "Sparse Signal",
+      "official_url": "https://example.com/sparse",
+      "category_slug": "analytics"
+    },
+    {
+      "name": "",
+      "official_url": "not-a-url",
+      "category_slug": "bad category"
+    }
+  ]
+}
