@@ -19,6 +19,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - AGENT6 Quarantine Classifier Agent for private worker/admin quarantine events, blockers, retry recommendations, and safe exclusion reasons.
 - AGENT7 Review Queue Packager Agent for local admin review-ready and review-blocked payload packages.
 - AGENT8 Publish Recommendation Engine for recommendation-only decisions with no published state.
+- AGENTQ no-auto-publish QA over AGENT1-AGENT8.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -168,3 +169,17 @@ AGENT8_PUBLISH_RECOMMENDATION_READY_NO_AUTOPUBLISH
 ```
 
 It can emit `recommend_publish`, `recommend_review`, `recommend_quarantine`, `recommend_reject`, or `recommend_recheck`. `recommend_publish` is not `published`; this module does not write DB rows, create `published_projection`, mutate sitemap, publish, deploy, or mutate `88CN` / `88cn-index-data`.
+
+## AGENTQ No-Auto-Publish QA
+
+AGENTQ validates the no-runtime and no-auto-publish boundary across AGENT1-AGENT8:
+
+```bash
+node tests/worker-boundary-qa.test.mjs
+```
+
+Expected result code:
+
+```text
+PASS_AGENTQ_NO_AUTO_PUBLISH_QA
+```
