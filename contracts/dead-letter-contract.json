@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/dead-letter-contract.json",
+  "title": "Dead Letter Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "job_id",
+    "namespace",
+    "kind",
+    "reason",
+    "attempts",
+    "max_attempts",
+    "redis_connected"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "attempts": {
+      "type": "integer"
+    },
+    "max_attempts": {
+      "type": "integer",
+      "maximum": 3
+    },
+    "redis_connected": {
+      "const": false
+    }
+  }
+}

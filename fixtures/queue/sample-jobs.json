@@ -1,0 +1,25 @@
+[
+  {
+    "job_id": "import-1",
+    "kind": "import",
+    "payload": {
+      "batch_id": "fixture-import-001"
+    }
+  },
+  {
+    "job_id": "audit-1",
+    "kind": "audit",
+    "payload": {
+      "url": "https://aurora.example.com"
+    },
+    "per_domain_cooldown_ms": 1000
+  },
+  {
+    "job_id": "canonical-fail",
+    "kind": "canonical",
+    "payload": {
+      "candidate_id": "ambiguous"
+    },
+    "max_attempts": 3
+  }
+]
