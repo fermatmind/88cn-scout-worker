@@ -18,6 +18,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - AGENT5 HTTP Audit Agent for fixture-default HTTP observation classification.
 - AGENT6 Quarantine Classifier Agent for private worker/admin quarantine events, blockers, retry recommendations, and safe exclusion reasons.
 - AGENT7 Review Queue Packager Agent for local admin review-ready and review-blocked payload packages.
+- AGENT8 Publish Recommendation Engine for recommendation-only decisions with no published state.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -151,3 +152,19 @@ AGENT7_REVIEW_QUEUE_PACKAGER_READY
 ```
 
 It emits `review-ready.jsonl`, `review-blocked.jsonl`, `admin-summary.md`, and `import-manifest.json` content in dry-run memory. It does not write directly to `88CN`, write `published_projection`, mutate sitemap, publicize quarantine internals, publish, deploy, or mutate `88cn-index-data`.
+
+## AGENT8 Publish Recommendation Engine
+
+The AGENT8 recommendation module turns review payloads into recommendation-only rows:
+
+```bash
+node tests/recommendation/publish-recommendation-engine.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT8_PUBLISH_RECOMMENDATION_READY_NO_AUTOPUBLISH
+```
+
+It can emit `recommend_publish`, `recommend_review`, `recommend_quarantine`, `recommend_reject`, or `recommend_recheck`. `recommend_publish` is not `published`; this module does not write DB rows, create `published_projection`, mutate sitemap, publish, deploy, or mutate `88CN` / `88cn-index-data`.

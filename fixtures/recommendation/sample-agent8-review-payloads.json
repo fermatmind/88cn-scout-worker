@@ -1,0 +1,95 @@
+[
+  {
+    "project_name": "Aurora Code",
+    "slug_candidate": "aurora-code",
+    "official_website_url": "https://aurora.example.com",
+    "github_url": "https://github.com/example/aurora-code",
+    "docs_url": "https://docs.aurora.example.com",
+    "primary_category": "ai-coding",
+    "collection_tag_candidates": [
+      "developer-tools"
+    ],
+    "public_signal_chip_candidates": [
+      "official_site_reachable",
+      "github_linked",
+      "docs_linked"
+    ],
+    "original_summary_candidate": null,
+    "review_blockers": [],
+    "source_status": "source_verified",
+    "canonical_status": "ready_for_review",
+    "audit_status": "audit_passed",
+    "recommendation": "recommend_review"
+  },
+  {
+    "project_name": "Blocked Audit AI",
+    "slug_candidate": "blocked-audit-ai",
+    "official_website_url": "https://blocked.example.com",
+    "github_url": null,
+    "docs_url": null,
+    "primary_category": "ai-search",
+    "collection_tag_candidates": [],
+    "public_signal_chip_candidates": [],
+    "original_summary_candidate": null,
+    "review_blockers": [
+      "source_not_verified",
+      "canonical_review_needed",
+      "audit_attention_needed",
+      "quarantine:waf_or_blocked"
+    ],
+    "source_status": "needs_manual_source_review",
+    "canonical_status": "needs_canonical_review",
+    "audit_status": "audit_attention_needed",
+    "recommendation": "recommend_quarantine"
+  },
+  {
+    "project_name": "Copied Summary AI",
+    "slug_candidate": "copied-summary-ai",
+    "official_website_url": "https://copied.example.com",
+    "github_url": null,
+    "docs_url": null,
+    "primary_category": null,
+    "collection_tag_candidates": [],
+    "public_signal_chip_candidates": [],
+    "original_summary_candidate": "Input text marked copied in fixture.",
+    "review_blockers": [
+      "quarantine:copied_content_risk"
+    ],
+    "source_status": "source_verified",
+    "canonical_status": "ready_for_review",
+    "audit_status": "audit_passed",
+    "recommendation": "recommend_quarantine"
+  },
+  {
+    "project_name": "Missing Fields AI",
+    "slug_candidate": "",
+    "official_website_url": "",
+    "github_url": null,
+    "docs_url": null,
+    "primary_category": null,
+    "collection_tag_candidates": [],
+    "public_signal_chip_candidates": [],
+    "original_summary_candidate": null,
+    "review_blockers": [],
+    "source_status": "source_verified",
+    "canonical_status": "ready_for_review",
+    "audit_status": "audit_passed",
+    "recommendation": "recommend_review"
+  },
+  {
+    "project_name": "Recheck AI",
+    "slug_candidate": "recheck-ai",
+    "official_website_url": "https://recheck.example.com",
+    "github_url": null,
+    "docs_url": null,
+    "primary_category": null,
+    "collection_tag_candidates": [],
+    "public_signal_chip_candidates": [],
+    "original_summary_candidate": null,
+    "review_blockers": [],
+    "source_status": "source_verified",
+    "canonical_status": "ready_for_review",
+    "audit_status": "audit_warning",
+    "recommendation": "recommend_review"
+  }
+]
