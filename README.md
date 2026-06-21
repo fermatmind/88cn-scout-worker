@@ -15,6 +15,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - AGENT2 Discovery Hint Agent for fixture/local-batch normalization of public-safe source hints.
 - AGENT3 Official Source Resolver Agent for fixture/local-only official URL, GitHub repo, and docs-domain classification.
 - AGENT4 Canonical Entity Agent for duplicate, rename, parent-brand, product-scope, domain/repo conflict, and quarantine identity classification.
+- AGENT5 HTTP Audit Agent for fixture-default HTTP observation classification.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -100,3 +101,19 @@ AGENT4_CANONICAL_ENTITY_AGENT_READY_DRY_RUN
 ```
 
 It does not auto-merge ambiguous entities, publish canonical results, write `published_projection`, write DB rows, mutate `88CN`, or mutate `88cn-index-data`.
+
+## AGENT5 HTTP Audit Agent
+
+The AGENT5 audit module classifies local fixture responses into HTTP-first audit observations:
+
+```bash
+node tests/audit/http-audit-worker.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT5_HTTP_AUDIT_AGENT_READY_FIXTURE_DEFAULT
+```
+
+It is fixture-default and dry-run only. It does not perform live HTTP, crawler execution, browser or Playwright fallback, WAF bypass, proxy evasion, login/cookie/session scraping, DB writes, sitemap mutation, `published_projection` writes, deploy, publication, or mutation of `88CN` / `88cn-index-data`.

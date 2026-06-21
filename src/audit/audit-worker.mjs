@@ -1,6 +1,20 @@
 import { createHash } from 'node:crypto';
 import { DEFAULT_AUDIT_POLICY, validateUrlInput } from './audit-contracts.mjs';
 
+export const AGENT5_RESULT_CODE = 'AGENT5_HTTP_AUDIT_AGENT_READY_FIXTURE_DEFAULT';
+
+export function runHttpAuditAgentDryRun(inputs, fixtureResponses, previousSnapshots = {}, policy = {}) {
+  const audit = runFixtureHttpAudit(inputs, fixtureResponses, previousSnapshots, policy);
+  return {
+    result_code: AGENT5_RESULT_CODE,
+    dry_run: true,
+    network_used: false,
+    production_write: false,
+    auto_publish: false,
+    audit
+  };
+}
+
 export function runFixtureHttpAudit(inputs, fixtureResponses, previousSnapshots = {}, policy = {}) {
   const effectivePolicy = { ...DEFAULT_AUDIT_POLICY, ...policy };
   const responses = new Map(fixtureResponses.map((response) => [response.url, response]));
