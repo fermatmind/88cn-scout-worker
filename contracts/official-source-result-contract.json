@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/official-source-result-contract.json",
+  "title": "Official Source Resolver Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_name",
+    "source_status",
+    "official_domain",
+    "github_repo",
+    "docs_domain",
+    "reason_codes",
+    "manual_review_required",
+    "auto_publish"
+  ],
+  "properties": {
+    "project_name": {
+      "type": "string"
+    },
+    "source_status": {
+      "type": "string",
+      "enum": [
+        "source_verified",
+        "source_missing",
+        "source_conflict",
+        "needs_manual_source_review"
+      ]
+    },
+    "official_domain": {
+      "type": ["string", "null"]
+    },
+    "github_repo": {
+      "type": ["string", "null"]
+    },
+    "docs_domain": {
+      "type": ["string", "null"]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "manual_review_required": {
+      "type": "boolean"
+    },
+    "auto_publish": {
+      "const": false
+    }
+  }
+}

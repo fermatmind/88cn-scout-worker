@@ -13,6 +13,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - Quarantine event contract skeleton.
 - AGENT1 no-runtime CLI contract, input manifest, output artifact shape, fixture, and validation.
 - AGENT2 Discovery Hint Agent for fixture/local-batch normalization of public-safe source hints.
+- AGENT3 Official Source Resolver Agent for fixture/local-only official URL, GitHub repo, and docs-domain classification.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -66,3 +67,19 @@ AGENT2_DISCOVERY_HINT_AGENT_READY_DRY_RUN
 ```
 
 It accepts fixture/local JSONL only. It does not crawl, fetch, copy descriptions, import rankings, publish, write DB rows, mutate `88CN`, or mutate `88cn-index-data`.
+
+## AGENT3 Official Source Resolver
+
+The AGENT3 source resolver classifies normalized discovery hints into source states:
+
+```bash
+node tests/source/official-source-resolver.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT3_OFFICIAL_SOURCE_RESOLVER_READY_DRY_RUN
+```
+
+It performs local URL/domain/GitHub repo normalization only. It does not perform live HTTP checks, logins, browser automation, crawler execution, source writes, or publication.
