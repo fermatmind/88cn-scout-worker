@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/agent-run-manifest.schema.json",
+  "title": "Agent Run Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "agent",
+    "mode",
+    "network",
+    "write_policy",
+    "input"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{2,80}$"
+    },
+    "agent": {
+      "type": "string",
+      "enum": [
+        "AGENT1",
+        "AGENT2",
+        "AGENT3",
+        "AGENT4",
+        "AGENT5",
+        "AGENT6",
+        "AGENT7",
+        "AGENT8",
+        "AGENT9",
+        "AGENTQ"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "contract_smoke",
+        "fixture_dry_run"
+      ]
+    },
+    "network": {
+      "type": "string",
+      "enum": [
+        "disabled"
+      ]
+    },
+    "write_policy": {
+      "type": "string",
+      "enum": [
+        "local_artifacts_only"
+      ]
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fixture_set"
+      ],
+      "properties": {
+        "fixture_set": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
