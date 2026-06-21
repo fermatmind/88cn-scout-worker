@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/review-ready-payload.schema.json",
+  "title": "Review Ready Payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_name",
+    "slug_candidate",
+    "official_website_url",
+    "source_status",
+    "canonical_status",
+    "audit_status",
+    "recommendation",
+    "review_blockers"
+  ],
+  "properties": {
+    "project_name": {
+      "type": "string"
+    },
+    "slug_candidate": {
+      "type": "string"
+    },
+    "official_website_url": {
+      "type": "string"
+    },
+    "github_url": {
+      "type": ["string", "null"]
+    },
+    "docs_url": {
+      "type": ["string", "null"]
+    },
+    "primary_category": {
+      "type": ["string", "null"]
+    },
+    "collection_tag_candidates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "public_signal_chip_candidates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "original_summary_candidate": {
+      "type": ["string", "null"]
+    },
+    "review_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_status": {
+      "type": "string"
+    },
+    "canonical_status": {
+      "type": "string"
+    },
+    "audit_status": {
+      "type": "string"
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": [
+        "recommend_publish",
+        "recommend_review",
+        "recommend_quarantine",
+        "recommend_reject",
+        "recommend_recheck"
+      ]
+    }
+  }
+}

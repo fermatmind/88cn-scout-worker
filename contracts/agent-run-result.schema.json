@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/agent-run-result.schema.json",
+  "title": "Agent Run Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "agent",
+    "status",
+    "dry_run",
+    "network_used",
+    "writes",
+    "artifacts",
+    "result_code"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "agent-run-result.v1"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "rejected"
+      ]
+    },
+    "dry_run": {
+      "const": true
+    },
+    "network_used": {
+      "const": false
+    },
+    "writes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "local_artifacts",
+        "db",
+        "published_projection",
+        "sitemap",
+        "external"
+      ],
+      "properties": {
+        "local_artifacts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "db": {
+          "const": 0
+        },
+        "published_projection": {
+          "const": 0
+        },
+        "sitemap": {
+          "const": 0
+        },
+        "external": {
+          "const": 0
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "result_code": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "run_id": "agent1-contract-smoke",
+  "agent": "AGENT1",
+  "mode": "contract_smoke",
+  "network": "disabled",
+  "write_policy": "local_artifacts_only",
+  "input": {
+    "fixture_set": "agent1/contract-smoke",
+    "notes": "Fixture proves the runner contract without runtime, network, DB, queue, or public writes."
+  }
+}
