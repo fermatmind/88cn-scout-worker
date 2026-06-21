@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/queue-job-contract.json",
+  "title": "Queue Job Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "job_id",
+    "kind",
+    "payload"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "import",
+        "canonical",
+        "audit",
+        "report"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "backoff_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "per_domain_cooldown_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    }
+  }
+}
