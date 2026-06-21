@@ -2,11 +2,12 @@
 
 Private no-runtime bootstrap repository for the future 88CN scout worker pipeline.
 
-This repository currently contains only documentation, boundary notes, fixtures guidance, and JSON contracts. It does not contain executable worker code, package metadata, dependencies, secrets, queue clients, crawler code, audit clients, Supabase clients, deploy config, or production runtime wiring.
+This repository currently contains documentation, boundary notes, fixtures guidance, JSON contracts, and local dry-run worker modules. It does not contain a runtime daemon, package metadata, dependencies, secrets, queue clients, crawler code, live audit clients, Supabase clients, deploy config, or production runtime wiring.
 
 ## Current Scope
 
 - Import batch contract skeleton.
+- Bounded import dry-run parser, validator, router, and output writer.
 - Canonical candidate contract skeleton.
 - Audit observation contract skeleton.
 - Quarantine event contract skeleton.

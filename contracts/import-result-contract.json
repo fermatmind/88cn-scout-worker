@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/import-result-contract.json",
+  "title": "Import Result Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batch_id",
+    "dry_run",
+    "status",
+    "accepted",
+    "needs_review",
+    "rejected",
+    "quarantine",
+    "rollback_plan",
+    "no_public_projection",
+    "automatic_published_projection",
+    "production_write"
+  ],
+  "properties": {
+    "batch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "batch_hash": {
+      "type": "string"
+    },
+    "dry_run": {
+      "const": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "dry_run_complete",
+        "rejected_manifest"
+      ]
+    },
+    "accepted": {
+      "type": "array"
+    },
+    "needs_review": {
+      "type": "array"
+    },
+    "rejected": {
+      "type": "array"
+    },
+    "quarantine": {
+      "type": "array"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "rollback_plan": {
+      "type": "object"
+    },
+    "no_public_projection": {
+      "const": true
+    },
+    "automatic_published_projection": {
+      "const": false
+    },
+    "production_write": {
+      "const": false
+    }
+  }
+}
