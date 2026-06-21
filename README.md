@@ -16,6 +16,7 @@ This repository currently contains documentation, boundary notes, fixtures guida
 - AGENT3 Official Source Resolver Agent for fixture/local-only official URL, GitHub repo, and docs-domain classification.
 - AGENT4 Canonical Entity Agent for duplicate, rename, parent-brand, product-scope, domain/repo conflict, and quarantine identity classification.
 - AGENT5 HTTP Audit Agent for fixture-default HTTP observation classification.
+- AGENT6 Quarantine Classifier Agent for private worker/admin quarantine events, blockers, retry recommendations, and safe exclusion reasons.
 - Documentation for future import, canonical, audit, quarantine, queue, and report modules.
 
 ## Not In Scope
@@ -117,3 +118,19 @@ AGENT5_HTTP_AUDIT_AGENT_READY_FIXTURE_DEFAULT
 ```
 
 It is fixture-default and dry-run only. It does not perform live HTTP, crawler execution, browser or Playwright fallback, WAF bypass, proxy evasion, login/cookie/session scraping, DB writes, sitemap mutation, `published_projection` writes, deploy, publication, or mutation of `88CN` / `88cn-index-data`.
+
+## AGENT6 Quarantine Classifier Agent
+
+The AGENT6 quarantine module classifies unresolved or unsafe records into private worker/admin buckets:
+
+```bash
+node tests/quarantine/quarantine-classifier.test.mjs
+```
+
+Expected result code:
+
+```text
+AGENT6_QUARANTINE_CLASSIFIER_READY
+```
+
+Quarantine is not rejection and not publication. It produces review blockers, retry recommendations, and safe exclusion reasons only; it does not delete data, write DB rows, expose quarantine internals publicly, write `published_projection`, mutate sitemap, publish, deploy, or mutate `88CN` / `88cn-index-data`.

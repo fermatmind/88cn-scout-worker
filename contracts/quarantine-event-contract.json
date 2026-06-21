@@ -6,22 +6,55 @@
   "additionalProperties": false,
   "required": [
     "event_id",
-    "reason",
-    "severity"
+    "project_name",
+    "category",
+    "severity",
+    "reason_codes",
+    "review_blocker",
+    "retry_recommendation",
+    "safe_exclusion_reason",
+    "private_worker_only",
+    "auto_publish",
+    "public_projection"
   ],
   "properties": {
     "event_id": {
       "type": "string",
       "minLength": 1
     },
-    "reason": {
+    "project_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_agent": {
       "type": "string",
       "enum": [
-        "duplicate",
-        "malformed_payload",
-        "privacy_risk",
-        "source_not_allowed",
-        "invalid_url",
+        "discovery",
+        "source",
+        "canonical",
+        "audit",
+        "manual"
+      ]
+    },
+    "source_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "missing_official_source",
+        "directory_hint_only",
+        "canonical_ambiguous",
+        "duplicate_conflict",
+        "http_unreachable",
+        "waf_or_blocked",
+        "docs_missing",
+        "github_mismatch",
+        "copied_content_risk",
+        "pii_or_private_data_risk",
         "manual_review_required"
       ]
     },
@@ -33,8 +66,38 @@
         "high"
       ]
     },
-    "public_summary": {
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_blocker": {
       "type": "string"
+    },
+    "retry_recommendation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "safe_exclusion_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "private_worker_only": {
+      "type": "boolean",
+      "const": true
+    },
+    "auto_publish": {
+      "type": "boolean",
+      "const": false
+    },
+    "public_projection": {
+      "type": "boolean",
+      "const": false
     }
   }
 }
