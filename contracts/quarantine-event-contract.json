@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/quarantine-event-contract.json",
+  "title": "Quarantine Event Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "reason",
+    "severity"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "duplicate",
+        "malformed_payload",
+        "privacy_risk",
+        "source_not_allowed",
+        "invalid_url",
+        "manual_review_required"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "public_summary": {
+      "type": "string"
+    }
+  }
+}

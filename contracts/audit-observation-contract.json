@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/audit-observation-contract.json",
+  "title": "Audit Observation Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "observation_id",
+    "target_url",
+    "status",
+    "observed_at"
+  ],
+  "properties": {
+    "observation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_run",
+        "passed",
+        "failed",
+        "timed_out",
+        "quarantined"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

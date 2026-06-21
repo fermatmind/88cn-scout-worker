@@ -1,0 +1,12 @@
+.env
+.env.*
+node_modules
+dist
+build
+coverage
+tmp
+*.log
+private-artifacts
+seed-handoff
+*.private.json
+*.private.jsonl

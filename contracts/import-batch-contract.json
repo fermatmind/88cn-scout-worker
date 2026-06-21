@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/import-batch-contract.json",
+  "title": "Import Batch Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batch_id",
+    "source",
+    "items"
+  ],
+  "properties": {
+    "batch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "reviewed_public_source",
+        "maintainer_submitted_fixture"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "official_url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "official_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "public_github_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "public_docs_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}
