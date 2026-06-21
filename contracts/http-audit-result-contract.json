@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/http-audit-result-contract.json",
+  "title": "HTTP Audit Result Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "target_url",
+    "website_reachable",
+    "canonical_detected",
+    "sitemap_detected",
+    "jsonld_detected",
+    "software_application_schema_detected",
+    "github_linked",
+    "docs_linked",
+    "redirect_status",
+    "dns_status",
+    "tls_status",
+    "waf_or_blocked_status",
+    "checked_at",
+    "audit_method",
+    "audit_observation_hash"
+  ],
+  "properties": {
+    "target_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "website_reachable": {
+      "type": "boolean"
+    },
+    "canonical_detected": {
+      "type": "boolean"
+    },
+    "sitemap_detected": {
+      "type": "boolean"
+    },
+    "jsonld_detected": {
+      "type": "boolean"
+    },
+    "software_application_schema_detected": {
+      "type": "boolean"
+    },
+    "github_linked": {
+      "type": "boolean"
+    },
+    "docs_linked": {
+      "type": "boolean"
+    },
+    "redirect_status": {
+      "type": "string"
+    },
+    "dns_status": {
+      "type": "string"
+    },
+    "tls_status": {
+      "type": "string"
+    },
+    "waf_or_blocked_status": {
+      "type": "string"
+    },
+    "checked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "audit_method": {
+      "type": "string"
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "dns_fail",
+          "tls_fail",
+          "timeout",
+          "404_not_found",
+          "5xx_error",
+          "redirect_loop",
+          "blocked_by_waf",
+          "robots_unavailable",
+          "sitemap_missing",
+          "jsonld_missing",
+          "canonical_missing",
+          "unknown_failure"
+        ]
+      }
+    },
+    "stale": {
+      "type": "boolean"
+    },
+    "last_successful_snapshot": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "audit_observation_hash": {
+      "type": "string"
+    }
+  }
+}

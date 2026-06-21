@@ -1,0 +1,41 @@
+{
+  "inputs": [
+    {
+      "url": "https://aurora.example.com"
+    },
+    {
+      "url": "https://blocked.example.com"
+    },
+    {
+      "url": "https://missing-schema.example.com"
+    }
+  ],
+  "responses": [
+    {
+      "url": "https://aurora.example.com",
+      "status": 200,
+      "sitemap_detected": true,
+      "body": "<html><head><link rel=\"canonical\" href=\"https://aurora.example.com\"><script type=\"application/ld+json\">{\"@type\":\"SoftwareApplication\"}</script></head><body><a href=\"https://github.com/example/aurora\">GitHub</a><a href=\"https://docs.aurora.example.com\">Docs</a></body></html>"
+    },
+    {
+      "url": "https://blocked.example.com",
+      "status": 403,
+      "blocked_by_waf": true,
+      "sitemap_detected": false,
+      "body": "<html><head></head><body>blocked</body></html>"
+    },
+    {
+      "url": "https://missing-schema.example.com",
+      "status": 200,
+      "sitemap_detected": false,
+      "body": "<html><head><link rel=\"canonical\" href=\"https://missing-schema.example.com\"></head><body></body></html>"
+    }
+  ],
+  "previous_snapshots": {
+    "https://blocked.example.com": {
+      "target_url": "https://blocked.example.com",
+      "status": 200,
+      "checked_at": "2026-06-20T00:00:00.000Z"
+    }
+  }
+}
