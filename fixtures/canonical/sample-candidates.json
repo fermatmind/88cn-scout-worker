@@ -25,6 +25,21 @@
   },
   {
     "batch_id": "canonical-fixture-001",
+    "name": "Pulse Analytics",
+    "official_url": "https://pulse.example.com",
+    "public_github_url": "https://github.com/example/pulse"
+  },
+  {
+    "batch_id": "canonical-fixture-001",
+    "name": "Pulse Analytics AI",
+    "official_url": "https://pulse.example.com",
+    "public_github_url": "https://github.com/example/pulse",
+    "previous_names": [
+      "Pulse Metrics"
+    ]
+  },
+  {
+    "batch_id": "canonical-fixture-001",
     "name": "Loose Identity"
   }
 ]
