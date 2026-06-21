@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://88cn.example/contracts/canonical-result-contract.json",
+  "title": "Canonical Resolver Result Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "project_name",
+    "canonical_slug",
+    "states",
+    "review_status",
+    "auto_publish",
+    "public_projection"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string"
+    },
+    "batch_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "row_index": {
+      "type": "integer"
+    },
+    "project_name": {
+      "type": "string"
+    },
+    "canonical_slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "normalized_name": {
+      "type": "string"
+    },
+    "normalized_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "normalized_github_repo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "identity_kind": {
+      "type": "string",
+      "enum": [
+        "organization",
+        "product",
+        "model_family",
+        "related_platform",
+        "unknown"
+      ]
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "not_duplicate",
+          "possible_duplicate",
+          "ambiguous_parent_brand",
+          "ambiguous_product_scope",
+          "one_domain_many_repos",
+          "one_repo_many_domains",
+          "needs_canonical_review",
+          "quarantined_identity_conflict"
+        ]
+      }
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "ready_for_review",
+        "needs_canonical_review"
+      ]
+    },
+    "auto_publish": {
+      "const": false
+    },
+    "public_projection": {
+      "const": false
+    }
+  }
+}

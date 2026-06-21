@@ -1,0 +1,30 @@
+[
+  {
+    "batch_id": "canonical-fixture-001",
+    "name": "Aurora Code",
+    "official_url": "https://aurora.example.com",
+    "public_github_url": "https://github.com/example/aurora-code"
+  },
+  {
+    "batch_id": "canonical-fixture-001",
+    "name": "Aurora Code Platform",
+    "official_url": "https://aurora.example.com",
+    "public_github_url": "https://github.com/example/aurora-platform"
+  },
+  {
+    "batch_id": "canonical-fixture-001",
+    "name": "Nucleus ML",
+    "official_url": "https://nucleus.example.com",
+    "public_github_url": "https://github.com/example/nucleus"
+  },
+  {
+    "batch_id": "canonical-fixture-001",
+    "name": "Nucleus ML",
+    "official_url": "https://nucleus-labs.example.com",
+    "public_github_url": "https://github.com/example/nucleus"
+  },
+  {
+    "batch_id": "canonical-fixture-001",
+    "name": "Loose Identity"
+  }
+]
